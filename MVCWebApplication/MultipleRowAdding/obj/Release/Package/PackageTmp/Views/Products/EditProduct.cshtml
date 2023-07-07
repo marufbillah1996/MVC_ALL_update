@@ -1,0 +1,59 @@
+﻿@model MultipleRowAdding.Models.Product
+@{
+    ViewBag.Title = "EditProduct";
+}
+<div align="center">
+    <h3>Product Management</h3>
+    <br />
+    <br />
+    <h3>Edit Product</h3>
+    <br />
+    @using (Html.BeginForm("EditProduct", "Products", FormMethod.Post))
+    {
+        @Html.HiddenFor(e => e.ProductId)
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td colspan="2">
+                    @if (ViewBag.Failed != null)
+                    {<span style="color:red;"> @ViewBag.Failed </span>}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(e => e.ProductName)
+                </td>
+                <td>
+                    @Html.TextBoxFor(e => e.ProductName) <br />
+                    @Html.ValidationMessageFor(e => e.ProductName, null, new
+                    {
+                        style = "color:red;"
+                    })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(e => e.ProductPrice)
+                </td>
+                <td>
+                    @Html.TextBoxFor(e => e.ProductPrice) <br />
+                    @Html.ValidationMessageFor(e => e.ProductPrice, null, new
+                    {
+                        style = "color:red;"
+                    })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"
+                    align="center">
+                    <br />
+                    <input type="submit"
+                           value="Submit" />
+                </td>
+            </tr>
+        </table>
+
+    }
+</div>
+<div class=col-12>
+    @Html.ActionLink("Back to list", "Index")
+</div>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MultipleRowAdding.Models.Supplier>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Assuming you have a shared layout file
+}
+
+<div class="container">
+    <h2 class="text-center mb-4">Supplier List</h2>
+
+    <div class="text-end mb-3">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Supplier Name</th>
+                <th>Contact Name</th>
+                <th>Contact Phone</th>
+                <th>Supplier Address</th>
+                <th>Postal Code</th>
+                <th>Supplier Category</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.SupplierName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ContactName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ContactPhone)</td>
+                    <td>@Html.DisplayFor(modelItem => item.SupplierAddress)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PostalCode)</td>
+                    <td>@Html.DisplayFor(modelItem => item.SupplierCategory.CatagoryName)</td>
+                    <td>
+                        <div class="btn-group">
+                            @Html.ActionLink("Edit", "Edit", new { SupplierId = item.SupplierId }, new { @class = "btn btn-sm btn-outline-primary" })
+                            @Html.ActionLink("Delete", "Delete", new { SupplierId = item.SupplierId }, new { @class = "btn btn-sm btn-outline-danger" })
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,63 @@
+﻿@model MultipleRowAdding.Models.Product
+@{
+    ViewBag.Title = "Create";
+}
+
+<div align="center">
+    <h3>Product Management</h3>
+    <br />
+    <br />
+    <h3>Add Product</h3>
+    <br />
+    @using (Html.BeginForm("Create", "Products", FormMethod.Post))
+    {
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td colspan="2">
+                    @if (ViewBag.Failed != null)
+                    {<span style="color:red;"> @ViewBag.Failed </span>}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(e => e.ProductName)
+                </td>
+                <td>
+                    @Html.TextBoxFor(e => e.ProductName) <br />
+                    @Html.ValidationMessageFor(e => e.ProductName, null, new
+                    {
+                        style = "color:red;"
+                    })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(e => e.ProductPrice)
+                </td>
+                <td>
+                    @Html.TextBoxFor(e => e.ProductPrice) <br />
+                    @Html.ValidationMessageFor(e => e.ProductPrice, null, new
+                    {
+                        style = "color:red;"
+                    })
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"
+                    align="center">
+                    <br />
+                    <input type="submit"
+                           value="Submit" />
+                </td>
+                @*<td><a href="@Url.Action("EditCustomer", "Customers", new { @CustomerId = Model.CustomerId })"> Edit </a></td>*@
+
+                @*<td><div>@Html.ActionLink("EditCustomer", "Customers", new { @CustomerId = Model. }, new { @class = "btn btn-warning  btn-sm glyphicon glyphicon-edit" })</div></td>*@
+            </tr>
+        </table>
+
+    }
+</div>
+<div class=col-12>
+    @Html.ActionLink("Back to list", "Index")
+</div>

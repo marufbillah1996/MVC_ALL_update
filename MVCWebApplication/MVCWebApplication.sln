@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33529.622
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication", "WebApplication\WebApplication.csproj", "{227094E2-B06E-4D16-B05B-807BB5224632}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultipleRowAdding", "MultipleRowAdding\MultipleRowAdding.csproj", "{6E54665F-EA3E-4254-9FEE-F6DB8A1D80E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{227094E2-B06E-4D16-B05B-807BB5224632}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{227094E2-B06E-4D16-B05B-807BB5224632}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{227094E2-B06E-4D16-B05B-807BB5224632}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{227094E2-B06E-4D16-B05B-807BB5224632}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E54665F-EA3E-4254-9FEE-F6DB8A1D80E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E54665F-EA3E-4254-9FEE-F6DB8A1D80E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E54665F-EA3E-4254-9FEE-F6DB8A1D80E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E54665F-EA3E-4254-9FEE-F6DB8A1D80E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {851E260F-FEC8-41E4-BAA6-AD0A435153B1}
+	EndGlobalSection
+EndGlobal

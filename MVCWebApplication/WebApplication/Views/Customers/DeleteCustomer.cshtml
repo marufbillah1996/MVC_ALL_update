@@ -1,0 +1,70 @@
+﻿@model WebApplication.Models.Customer
+@{
+    ViewBag.Title = "DeleteCustomer";
+}
+<div align="center">
+    <h3>Customer Management</h3>
+    <br />
+    <br />
+    <h3>Delete Customer</h3>
+    <br />
+    @using (Html.BeginForm("DeleteCustomer", "Customers", FormMethod.Post))
+    {
+        @Html.HiddenFor(e => e.CustomerId)
+        <table>
+            <tr>
+                <td colspan="2">
+                    @if (ViewBag.Failed != null)
+                    {<span style="color:red;"> @ViewBag.Failed </span>}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(e => e.CustomerName)
+                </td>
+                <td>
+                    @Html.TextBoxFor(e => e.CustomerName) <br />
+                    @Html.ValidationMessageFor(e => e.CustomerName, null, new
+                    {
+                        style = "color:red;"
+                    })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(e => e.Address)
+                </td>
+                <td>
+                    @Html.TextBoxFor(e => e.Address) <br />
+                    @Html.ValidationMessageFor(e => e.Address, null, new
+                    {
+                        style = "color:red;"
+                    })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(e => e.EmailId)
+                </td>
+                <td>
+                    @Html.TextBoxFor(e => e.EmailId) <br />
+                    @Html.ValidationMessageFor(e => e.EmailId, null, new
+                    {
+                        style = "color:red;"
+                    })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"
+                    align="center">
+                    <br />
+                    <input type="submit"
+                           value="Submit" />
+                </td>
+            </tr>
+        </table>
+
+    }
+</div>
+
+

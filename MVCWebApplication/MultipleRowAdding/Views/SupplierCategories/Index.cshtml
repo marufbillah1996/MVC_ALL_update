@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MultipleRowAdding.Models.SupplierCategory>
+@{
+    ViewBag.Title = "Index";
+}
+<h1>Customer List</h1>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+@using (Html.BeginForm("Index", "SupplierCategories", FormMethod.Get))
+{
+    //the following are search options
+
+    @*<b> Search Option: </b>@Html.RadioButton("option", "CustomerName") <text>Customer Name</text> @Html.RadioButton("option", "CustomerAddress") <text> Customer Address </text>
+    @Html.TextBox("search")
+    <input type="submit"
+           name="submit"
+           value="Search" />*@
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CatagoryName)
+        </th>
+      
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CatagoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { SupplierCatagoryId = item.SupplierCatagoryId }) |
+                @*@Html.ActionLink("Details", "Details", new { id = item.CustomerId }) |*@
+                @Html.ActionLink("Delete", "Delete", new { SupplierCatagoryId = item.SupplierCatagoryId })
+            </td>
+        </tr>
+    }
+
+</table>
+}

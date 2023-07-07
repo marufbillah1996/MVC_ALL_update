@@ -1,0 +1,77 @@
+﻿@model IEnumerable<MultipleRowAdding.Models.Product>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+
+
+        <!--Customer Name:
+<input id="ProductName" type="text" />
+<br />
+
+<input tabindex="152" type="submit" id="submit_button" value="Search" class="btn btn-success" />
+<br />
+<div class="table-responsive">
+    <table id="tblProducts" cellpadding="0" cellspacing="0">
+        <tr>
+            <th style="width: 120px"> ProductId</th> 
+            <th style="width: 120px"> ProductName</th>
+            <th style="width: 90px"> ProductPrice</th>
+
+        </tr>
+    </table>
+</div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        GetPtoducts();
+        $("#submit_button").click(function () {
+        GetPtoducts();
+    });
+    });
+    function GetPtoducts() {
+        var productName = $.trim($("#ProductName").val());
+        $.ajax({
+            type: "POST",
+            url: "/Products/SearchProduct",
+            data: "{productName:'" + productName + "'}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (products) {
+                var table = $("#tblProducts");
+                table.find("tr:not(:first)").remove();
+                $.each(products, function (i, product) {
+                    var table = $("#tblProducts");
+                    var row = table[0].insertRow(-1);
+                    $(row).append("<td />");
+                    $(row).find("td").eq(0).html(product.ProductId);
+                    $(row).append("<td />");
+                    $(row).find("td").eq(1).html(product.ProductName);
+                    $(row).append("<td />");
+                    $(row).find("td").eq(2).html(product.ProductPrice);
+                    console.log(table);
+                });
+            }
+        });
+    }
+</script>-->
+@*<script>
+        $("submit_button").click(function() {
+            var pProductName = document.getElementById('ProductName').value;
+            $("table tr").each(function (results) {
+                console.log('pProductName');
+                if (results !== 0) {
+                    var id = $(this).find("td:nth-child(2)").text();
+                    if (id.indexOf(pProductName) !== 0 && id.toLowerCase().indexOf(pProductName.toLowerCase()) < 0) {
+                        $(this).hide();
+                    }
+                    else {
+                        $(this).show();
+                    }
+                }
+            })
+        })
+    </script>*@

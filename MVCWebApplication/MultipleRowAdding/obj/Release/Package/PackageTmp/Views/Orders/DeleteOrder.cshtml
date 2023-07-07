@@ -1,0 +1,102 @@
+﻿@model MultipleRowAdding.Models.Order
+@{
+    ViewBag.Title = "DeleteOrder";
+}
+
+<h2>Confirm Delete Order</h2>
+
+<p>Are you sure you want to delete the following order?</p>
+
+<div>
+    <h4>Order Information</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Order ID:</dt>
+        <dd>@Model.OrderId</dd>
+        <dt>Order Date:</dt>
+        <dd>@Model.OrderDate</dd>
+        <dt>Customer Name</dt>
+        <dd>@Model.Customer.CustomerName</dd>
+        <dt>Customer Address</dt>
+        <dd>@Model.Customer.CustomerAddress</dd>
+        <!-- Display other order properties as needed -->
+
+    </dl>
+    <table class="table table-striped table-responsive">
+        <tbody>
+
+            <tr>
+                <td colspan="3">
+                    <div class="table-responsive-sm">
+                        <table class="table table-striped css-serial">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Item</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Cost</th>
+                                    <th>Total</th>
+                                    <th></th>
+
+                                </tr>
+                            </thead>
+                            @{ var totalBill = 0; }
+                            @foreach (var order in Model.OrderDetails)
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td>@order.Product.ProductName</td>
+                                        <td>@order.Quantity</td>
+                                        <td>@order.Price</td>
+                                        <td>@order.Amount</td>
+                                        <td>@Html.ActionLink(" ", "EditOrder", new { ProductId = @order.ProductId, OrderId = order.OrderId }, new { @class = "btn btn-warning pull-right  btn-sm glyphicon glyphicon-edit" })</td>
+                                    </tr>
+
+                                </tbody>
+                                totalBill = totalBill + @Convert.ToInt32(order.Amount);
+
+
+                            }
+
+                        </table>
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-5">
+
+                            </div>
+                            <div class="col-lg-4 col-sm-5 ml-auto">
+                                <table class="table table-clear">
+                                    <tbody>
+                                        <tr>
+
+                                            <td class="left">
+                                                <strong>Total Bill:</strong>
+                                            </td>
+                                            <td class="right">
+                                                <strong>$@totalBill</strong>
+                                            </td>
+                                            @*<td class="left">
+                                                    <span class="pull-right" style="margin-right:200px;"><strong>Total Bill :  </strong> @totalBill</span>
+                                                    </td>
+                                                </tr>*@
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@using (Html.BeginForm("DeleteOrder", "Orders", new { orderId = Model.OrderId }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            @Html.ActionLink("Cancel", "Index", "Orders", null, new { @class = "btn btn-default" })
+        </div>
+    </div>
+}

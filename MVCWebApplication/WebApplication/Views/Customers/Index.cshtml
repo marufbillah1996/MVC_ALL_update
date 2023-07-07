@@ -1,0 +1,34 @@
+﻿@model IEnumerable<WebApplication.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div align="center">
+    <h3> Customer Management </h3>
+    <span> <a href="@Url.Action("AddCustomer","Customers")"> Add Customer </a></span>
+    <br />
+    <br />
+    <table cellpadding="5" border="1">
+        <tr style="background-color:#808080; color:white;">
+            <td>Customer Id </td>
+            <td> Name</td>
+            <td> Address</td>
+            <td>Email Id</td>
+            <td>Action</td>
+        </tr>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.CustomerId</td>
+                <td>@emp.CustomerName</td>
+                <td>@emp.Address</td>
+                <td>@emp.EmailId</td>
+                <td>
+                    <a href="@Url.Action("EditCustomer", "Customers", new { @CustomerId = emp.CustomerId })"> Edit </a>
+                    <a href="@Url.Action("DeleteCustomer", "Customers", new { @CustomerId = emp.CustomerId })"> Delete </a>
+                </td>
+            </tr>
+
+        }
+    </table>
+</div> 
